@@ -1,0 +1,550 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.6.3">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan">
+      <stringProp name="TestPlan.comments">You can run me using: jmeter -Jthreads=&lt;Number of threads&gt; -Jrampup=&lt;rampup in seconds&gt; -Jduration=&lt;duration in seconds&gt; -Jiterations=&lt;Number of iterations, -1 means infinite&gt; -e -o &lt;report output folder&gt;</stringProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group">
+        <intProp name="ThreadGroup.num_threads">1</intProp>
+        <intProp name="ThreadGroup.ramp_time">0</intProp>
+        <longProp name="ThreadGroup.duration">10</longProp>
+        <longProp name="ThreadGroup.delay">0</longProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController">
+          <intProp name="LoopController.loops">-1</intProp>
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+        </elementProp>
+      </ThreadGroup>
+      <hashTree>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="filename">C:/Users/PC/Desktop/Reporte Jmeter/Resultados Prueba/Resultados.CSV</stringProp>
+          <boolProp name="ignoreFirstLine">false</boolProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="variableNames"></stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request">
+          <stringProp name="TestPlan.comments">Created from cURL on 2025-10-19T09:08:30.6078223</stringProp>
+          <stringProp name="HTTPSampler.domain">fe-api.stake.pe</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.path">/restapi/v1/user/login?cfid=1760790684</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&quot;login&quot;:${Usuario},&quot;password&quot;:$$Contraseña}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP HeaderManager">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="accept" elementType="Header">
+              <stringProp name="Header.name">accept</stringProp>
+              <stringProp name="Header.value">*/*</stringProp>
+            </elementProp>
+            <elementProp name="accept-language" elementType="Header">
+              <stringProp name="Header.name">accept-language</stringProp>
+              <stringProp name="Header.value">es-ES,es;q=0.9</stringProp>
+            </elementProp>
+            <elementProp name="content-language" elementType="Header">
+              <stringProp name="Header.name">content-language</stringProp>
+              <stringProp name="Header.value">es</stringProp>
+            </elementProp>
+            <elementProp name="content-type" elementType="Header">
+              <stringProp name="Header.name">content-type</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="origin" elementType="Header">
+              <stringProp name="Header.name">origin</stringProp>
+              <stringProp name="Header.value">https://stake.pe</stringProp>
+            </elementProp>
+            <elementProp name="priority" elementType="Header">
+              <stringProp name="Header.name">priority</stringProp>
+              <stringProp name="Header.value">u=1, i</stringProp>
+            </elementProp>
+            <elementProp name="referer" elementType="Header">
+              <stringProp name="Header.name">referer</stringProp>
+              <stringProp name="Header.value">https://stake.pe/</stringProp>
+            </elementProp>
+            <elementProp name="sec-ch-ua" elementType="Header">
+              <stringProp name="Header.name">sec-ch-ua</stringProp>
+              <stringProp name="Header.value">&quot;Google Chrome&quot;;v=&quot;141&quot;, &quot;Not?A_Brand&quot;;v=&quot;8&quot;, &quot;Chromium&quot;;v=&quot;141&quot;</stringProp>
+            </elementProp>
+            <elementProp name="sec-ch-ua-mobile" elementType="Header">
+              <stringProp name="Header.name">sec-ch-ua-mobile</stringProp>
+              <stringProp name="Header.value">?0</stringProp>
+            </elementProp>
+            <elementProp name="sec-ch-ua-platform" elementType="Header">
+              <stringProp name="Header.name">sec-ch-ua-platform</stringProp>
+              <stringProp name="Header.value">&quot;Windows&quot;</stringProp>
+            </elementProp>
+            <elementProp name="sec-fetch-dest" elementType="Header">
+              <stringProp name="Header.name">sec-fetch-dest</stringProp>
+              <stringProp name="Header.value">empty</stringProp>
+            </elementProp>
+            <elementProp name="sec-fetch-mode" elementType="Header">
+              <stringProp name="Header.name">sec-fetch-mode</stringProp>
+              <stringProp name="Header.value">cors</stringProp>
+            </elementProp>
+            <elementProp name="sec-fetch-site" elementType="Header">
+              <stringProp name="Header.name">sec-fetch-site</stringProp>
+              <stringProp name="Header.value">same-site</stringProp>
+            </elementProp>
+            <elementProp name="user-agent" elementType="Header">
+              <stringProp name="Header.name">user-agent</stringProp>
+              <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36</stringProp>
+            </elementProp>
+          </collectionProp>
+          <stringProp name="TestPlan.comments">Created from cURL on 2025-10-19T09:08:30.6088223</stringProp>
+        </HeaderManager>
+        <hashTree/>
+        <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP CookieManager">
+          <collectionProp name="CookieManager.cookies">
+            <elementProp name="user-locale" elementType="Cookie" testname="user-locale">
+              <stringProp name="Cookie.value">es</stringProp>
+              <stringProp name="Cookie.domain">fe-api.stake.pe</stringProp>
+              <stringProp name="Cookie.path">/restapi/v1/user/login</stringProp>
+              <boolProp name="Cookie.secure">false</boolProp>
+              <longProp name="Cookie.expires">0</longProp>
+              <boolProp name="Cookie.path_specified">true</boolProp>
+              <boolProp name="Cookie.domain_specified">true</boolProp>
+            </elementProp>
+            <elementProp name="_fbp" elementType="Cookie" testname="_fbp">
+              <stringProp name="Cookie.value">fb.1.1734016007495.536988623109442944</stringProp>
+              <stringProp name="Cookie.domain">fe-api.stake.pe</stringProp>
+              <stringProp name="Cookie.path">/restapi/v1/user/login</stringProp>
+              <boolProp name="Cookie.secure">false</boolProp>
+              <longProp name="Cookie.expires">0</longProp>
+              <boolProp name="Cookie.path_specified">true</boolProp>
+              <boolProp name="Cookie.domain_specified">true</boolProp>
+            </elementProp>
+            <elementProp name="wooTracker" elementType="Cookie" testname="wooTracker">
+              <stringProp name="Cookie.value">npADQoFdy7uw</stringProp>
+              <stringProp name="Cookie.domain">fe-api.stake.pe</stringProp>
+              <stringProp name="Cookie.path">/restapi/v1/user/login</stringProp>
+              <boolProp name="Cookie.secure">false</boolProp>
+              <longProp name="Cookie.expires">0</longProp>
+              <boolProp name="Cookie.path_specified">true</boolProp>
+              <boolProp name="Cookie.domain_specified">true</boolProp>
+            </elementProp>
+            <elementProp name="_ga" elementType="Cookie" testname="_ga">
+              <stringProp name="Cookie.value">GA1.1.328891814.1734016008</stringProp>
+              <stringProp name="Cookie.domain">fe-api.stake.pe</stringProp>
+              <stringProp name="Cookie.path">/restapi/v1/user/login</stringProp>
+              <boolProp name="Cookie.secure">false</boolProp>
+              <longProp name="Cookie.expires">0</longProp>
+              <boolProp name="Cookie.path_specified">true</boolProp>
+              <boolProp name="Cookie.domain_specified">true</boolProp>
+            </elementProp>
+            <elementProp name="channel_flow_first" elementType="Cookie" testname="channel_flow_first">
+              <stringProp name="Cookie.value">direct/none</stringProp>
+              <stringProp name="Cookie.domain">fe-api.stake.pe</stringProp>
+              <stringProp name="Cookie.path">/restapi/v1/user/login</stringProp>
+              <boolProp name="Cookie.secure">false</boolProp>
+              <longProp name="Cookie.expires">0</longProp>
+              <boolProp name="Cookie.path_specified">true</boolProp>
+              <boolProp name="Cookie.domain_specified">true</boolProp>
+            </elementProp>
+            <elementProp name="intercom-device-id-xnceu7u9" elementType="Cookie" testname="intercom-device-id-xnceu7u9">
+              <stringProp name="Cookie.value">2c7b16b3-dfc8-458f-91e6-f7903b19b6f7</stringProp>
+              <stringProp name="Cookie.domain">fe-api.stake.pe</stringProp>
+              <stringProp name="Cookie.path">/restapi/v1/user/login</stringProp>
+              <boolProp name="Cookie.secure">false</boolProp>
+              <longProp name="Cookie.expires">0</longProp>
+              <boolProp name="Cookie.path_specified">true</boolProp>
+              <boolProp name="Cookie.domain_specified">true</boolProp>
+            </elementProp>
+            <elementProp name="utm_source_first" elementType="Cookie" testname="utm_source_first">
+              <stringProp name="Cookie.value">onsite</stringProp>
+              <stringProp name="Cookie.domain">fe-api.stake.pe</stringProp>
+              <stringProp name="Cookie.path">/restapi/v1/user/login</stringProp>
+              <boolProp name="Cookie.secure">false</boolProp>
+              <longProp name="Cookie.expires">0</longProp>
+              <boolProp name="Cookie.path_specified">true</boolProp>
+              <boolProp name="Cookie.domain_specified">true</boolProp>
+            </elementProp>
+            <elementProp name="utm_medium_first" elementType="Cookie" testname="utm_medium_first">
+              <stringProp name="Cookie.value">casinofeatured</stringProp>
+              <stringProp name="Cookie.domain">fe-api.stake.pe</stringProp>
+              <stringProp name="Cookie.path">/restapi/v1/user/login</stringProp>
+              <boolProp name="Cookie.secure">false</boolProp>
+              <longProp name="Cookie.expires">0</longProp>
+              <boolProp name="Cookie.path_specified">true</boolProp>
+              <boolProp name="Cookie.domain_specified">true</boolProp>
+            </elementProp>
+            <elementProp name="utm_campaign_first" elementType="Cookie" testname="utm_campaign_first">
+              <stringProp name="Cookie.value">monthly</stringProp>
+              <stringProp name="Cookie.domain">fe-api.stake.pe</stringProp>
+              <stringProp name="Cookie.path">/restapi/v1/user/login</stringProp>
+              <boolProp name="Cookie.secure">false</boolProp>
+              <longProp name="Cookie.expires">0</longProp>
+              <boolProp name="Cookie.path_specified">true</boolProp>
+              <boolProp name="Cookie.domain_specified">true</boolProp>
+            </elementProp>
+            <elementProp name="_tgpc" elementType="Cookie" testname="_tgpc">
+              <stringProp name="Cookie.value">a01c8045-dcc4-5ff6-b5e0-2eb60c2c3adf</stringProp>
+              <stringProp name="Cookie.domain">fe-api.stake.pe</stringProp>
+              <stringProp name="Cookie.path">/restapi/v1/user/login</stringProp>
+              <boolProp name="Cookie.secure">false</boolProp>
+              <longProp name="Cookie.expires">0</longProp>
+              <boolProp name="Cookie.path_specified">true</boolProp>
+              <boolProp name="Cookie.domain_specified">true</boolProp>
+            </elementProp>
+            <elementProp name="FPAU" elementType="Cookie" testname="FPAU">
+              <stringProp name="Cookie.value">1.1.1862667489.1757692895</stringProp>
+              <stringProp name="Cookie.domain">fe-api.stake.pe</stringProp>
+              <stringProp name="Cookie.path">/restapi/v1/user/login</stringProp>
+              <boolProp name="Cookie.secure">false</boolProp>
+              <longProp name="Cookie.expires">0</longProp>
+              <boolProp name="Cookie.path_specified">true</boolProp>
+              <boolProp name="Cookie.domain_specified">true</boolProp>
+            </elementProp>
+            <elementProp name="_dcid" elementType="Cookie" testname="_dcid">
+              <stringProp name="Cookie.value">328891814.1734016008</stringProp>
+              <stringProp name="Cookie.domain">fe-api.stake.pe</stringProp>
+              <stringProp name="Cookie.path">/restapi/v1/user/login</stringProp>
+              <boolProp name="Cookie.secure">false</boolProp>
+              <longProp name="Cookie.expires">0</longProp>
+              <boolProp name="Cookie.path_specified">true</boolProp>
+              <boolProp name="Cookie.domain_specified">true</boolProp>
+            </elementProp>
+            <elementProp name="mp_a76977e442e8f68842a5b1471fe18b69_mixpanel" elementType="Cookie" testname="mp_a76977e442e8f68842a5b1471fe18b69_mixpanel">
+              <stringProp name="Cookie.value">%7B%22distinct_id%22%3A%20%22%24device%3A199fccbb5a949b-0c6c0911f1eb628-26061851-1fa400-199fccbb5a949b%22%2C%22%24device_id%22%3A%20%22199fccbb5a949b-0c6c0911f1eb628-26061851-1fa400-199fccbb5a949b%22%7D</stringProp>
+              <stringProp name="Cookie.domain">fe-api.stake.pe</stringProp>
+              <stringProp name="Cookie.path">/restapi/v1/user/login</stringProp>
+              <boolProp name="Cookie.secure">false</boolProp>
+              <longProp name="Cookie.expires">0</longProp>
+              <boolProp name="Cookie.path_specified">true</boolProp>
+              <boolProp name="Cookie.domain_specified">true</boolProp>
+            </elementProp>
+            <elementProp name="_gcl_gs" elementType="Cookie" testname="_gcl_gs">
+              <stringProp name="Cookie.value">2.1.k1$i1760882831$u166151292</stringProp>
+              <stringProp name="Cookie.domain">fe-api.stake.pe</stringProp>
+              <stringProp name="Cookie.path">/restapi/v1/user/login</stringProp>
+              <boolProp name="Cookie.secure">false</boolProp>
+              <longProp name="Cookie.expires">0</longProp>
+              <boolProp name="Cookie.path_specified">true</boolProp>
+              <boolProp name="Cookie.domain_specified">true</boolProp>
+            </elementProp>
+            <elementProp name="s2" elementType="Cookie" testname="s2">
+              <stringProp name="Cookie.value">wv797m8eb6i4ouhdj4pnug1v</stringProp>
+              <stringProp name="Cookie.domain">fe-api.stake.pe</stringProp>
+              <stringProp name="Cookie.path">/restapi/v1/user/login</stringProp>
+              <boolProp name="Cookie.secure">false</boolProp>
+              <longProp name="Cookie.expires">0</longProp>
+              <boolProp name="Cookie.path_specified">true</boolProp>
+              <boolProp name="Cookie.domain_specified">true</boolProp>
+            </elementProp>
+            <elementProp name="FPGCLAW" elementType="Cookie" testname="FPGCLAW">
+              <stringProp name="Cookie.value">2.1.kCjwKCAjwmNLHBhA4EiwA3ts3mffA7wR1a8h2S6epVToHU-qoCx0OLDny5sDh--sUlKanUAAU_IUXVRoC6QUQAvD_BwE$i1760882834</stringProp>
+              <stringProp name="Cookie.domain">fe-api.stake.pe</stringProp>
+              <stringProp name="Cookie.path">/restapi/v1/user/login</stringProp>
+              <boolProp name="Cookie.secure">false</boolProp>
+              <longProp name="Cookie.expires">0</longProp>
+              <boolProp name="Cookie.path_specified">true</boolProp>
+              <boolProp name="Cookie.domain_specified">true</boolProp>
+            </elementProp>
+            <elementProp name="channel_flow" elementType="Cookie" testname="channel_flow">
+              <stringProp name="Cookie.value">direct/none,onsite/casinofeatured,bcbannertext/intercom,917f759e-d586-4c17-be18-68530cb60a76/cpc,bcbannertext/intercom,bcemail/optimove,jcpost/intercom,11d9d9ad-2e40-4919-a195-77ffd0cd2ea8/cpc</stringProp>
+              <stringProp name="Cookie.domain">fe-api.stake.pe</stringProp>
+              <stringProp name="Cookie.path">/restapi/v1/user/login</stringProp>
+              <boolProp name="Cookie.secure">false</boolProp>
+              <longProp name="Cookie.expires">0</longProp>
+              <boolProp name="Cookie.path_specified">true</boolProp>
+              <boolProp name="Cookie.domain_specified">true</boolProp>
+            </elementProp>
+            <elementProp name="channel_flow_last" elementType="Cookie" testname="channel_flow_last">
+              <stringProp name="Cookie.value">11d9d9ad-2e40-4919-a195-77ffd0cd2ea8/cpc</stringProp>
+              <stringProp name="Cookie.domain">fe-api.stake.pe</stringProp>
+              <stringProp name="Cookie.path">/restapi/v1/user/login</stringProp>
+              <boolProp name="Cookie.secure">false</boolProp>
+              <longProp name="Cookie.expires">0</longProp>
+              <boolProp name="Cookie.path_specified">true</boolProp>
+              <boolProp name="Cookie.domain_specified">true</boolProp>
+            </elementProp>
+            <elementProp name="utm_source" elementType="Cookie" testname="utm_source">
+              <stringProp name="Cookie.value">11d9d9ad-2e40-4919-a195-77ffd0cd2ea8</stringProp>
+              <stringProp name="Cookie.domain">fe-api.stake.pe</stringProp>
+              <stringProp name="Cookie.path">/restapi/v1/user/login</stringProp>
+              <boolProp name="Cookie.secure">false</boolProp>
+              <longProp name="Cookie.expires">0</longProp>
+              <boolProp name="Cookie.path_specified">true</boolProp>
+              <boolProp name="Cookie.domain_specified">true</boolProp>
+            </elementProp>
+            <elementProp name="utm_medium" elementType="Cookie" testname="utm_medium">
+              <stringProp name="Cookie.value">cpc</stringProp>
+              <stringProp name="Cookie.domain">fe-api.stake.pe</stringProp>
+              <stringProp name="Cookie.path">/restapi/v1/user/login</stringProp>
+              <boolProp name="Cookie.secure">false</boolProp>
+              <longProp name="Cookie.expires">0</longProp>
+              <boolProp name="Cookie.path_specified">true</boolProp>
+              <boolProp name="Cookie.domain_specified">true</boolProp>
+            </elementProp>
+            <elementProp name="_tguatd" elementType="Cookie" testname="_tguatd">
+              <stringProp name="Cookie.value">eyJzYyI6IjExZDlkOWFkLTJlNDAtNDkxOS1hMTk1LTc3ZmZkMGNkMmVhOCIsIm1kIjoiY3BjIiwiZnRzIjoid3d3Lmdvb2dsZS5jb20ifQ==</stringProp>
+              <stringProp name="Cookie.domain">fe-api.stake.pe</stringProp>
+              <stringProp name="Cookie.path">/restapi/v1/user/login</stringProp>
+              <boolProp name="Cookie.secure">false</boolProp>
+              <longProp name="Cookie.expires">0</longProp>
+              <boolProp name="Cookie.path_specified">true</boolProp>
+              <boolProp name="Cookie.domain_specified">true</boolProp>
+            </elementProp>
+            <elementProp name="_tgaid" elementType="Cookie" testname="_tgaid">
+              <stringProp name="Cookie.value">eyJnYyI6IkNqd0tDQWp3bU5MSEJoQTRFaXdBM3RzM21mZkE3d1IxYThoMlM2ZXBWVG9IVS1xb0N4ME9MRG55NXNEaC0tc1VsS2FuVUFBVV9JVVhWUm9DNlFVUUF2RF9Cd0UifQ==</stringProp>
+              <stringProp name="Cookie.domain">fe-api.stake.pe</stringProp>
+              <stringProp name="Cookie.path">/restapi/v1/user/login</stringProp>
+              <boolProp name="Cookie.secure">false</boolProp>
+              <longProp name="Cookie.expires">0</longProp>
+              <boolProp name="Cookie.path_specified">true</boolProp>
+              <boolProp name="Cookie.domain_specified">true</boolProp>
+            </elementProp>
+            <elementProp name="_tglksd" elementType="Cookie" testname="_tglksd">
+              <stringProp name="Cookie.value">eyJzIjoiQ2p3S0NBandtTkxIQmhBNEVpd0EzdHMzbWZmQTd3UjFhOGgyUzZlcFZUb0hVLXFvQ3gwT0xEbnk1c0RoLS1zVWxLYW5VQUFVX0lVWFZSb0M2UVVRQXZEX0J3RSIsInN0IjoxNzYwODgyODM0MDMxLCJzb2QiOiJ3d3cuZ29vZ2xlLmNvbSIsInNvZHQiOjE3NjA4ODI4MzQwMzEsInNvZHMiOiJyIiwic29kc3QiOjE3NjA4ODI4MzQwMzEsImciOiJDandLQ0Fqd21OTEhCaEE0RWl3QTN0czNtZmZBN3dSMWE4aDJTNmVwVlRvSFUtcW9DeDBPTERueTVzRGgtLXNVbEthblVBQVVfSVVYVlJvQzZRVVFBdkRfQndFIiwiZ3QiOjE3NjA4ODI4MzQwMzF9</stringProp>
+              <stringProp name="Cookie.domain">fe-api.stake.pe</stringProp>
+              <stringProp name="Cookie.path">/restapi/v1/user/login</stringProp>
+              <boolProp name="Cookie.secure">false</boolProp>
+              <longProp name="Cookie.expires">0</longProp>
+              <boolProp name="Cookie.path_specified">true</boolProp>
+              <boolProp name="Cookie.domain_specified">true</boolProp>
+            </elementProp>
+            <elementProp name="_tgidts" elementType="Cookie" testname="_tgidts">
+              <stringProp name="Cookie.value">eyJzaCI6IjA4NWM0MTQzNTFmNTA2OWRkZmY4YTlkMzc5ZDZjZTk5IiwiY2kiOiIwOGJjMGM1OS1kOGQzLTQ5MWEtOThkNy1lZDc0MDFmYTM5NGQiLCJzaSI6IkNqd0tDQWp3bU5MSEJoQTRFaXdBM3RzM21mZkE3d1IxYThoMlM2ZXBWVG9IVS1xb0N4ME9MRG55NXNEaC0tc1VsS2FuVUFBVV9JVVhWUm9DNlFVUUF2RF9Cd0UiLCJnYiI6IjBBQUFBQV9vREFUbXBWbXU3d25Za3FfYV9Mdmpod2o0bW0iLCJ3YiI6IkNrd0tDQWp3OWN6SEJoQUVFandBVmE2U0E4LWpyT3QyMExobFdCdFBpUG9EYWhPLUZmWklRdzIyeGx0QVZrSlkwU01hZk9vZVRlbDdtR2RKMmdSaEZCeUZiMzRZZk9qamhyY2FBa2QyIn0=</stringProp>
+              <stringProp name="Cookie.domain">fe-api.stake.pe</stringProp>
+              <stringProp name="Cookie.path">/restapi/v1/user/login</stringProp>
+              <boolProp name="Cookie.secure">false</boolProp>
+              <longProp name="Cookie.expires">0</longProp>
+              <boolProp name="Cookie.path_specified">true</boolProp>
+              <boolProp name="Cookie.domain_specified">true</boolProp>
+            </elementProp>
+            <elementProp name="intercom-id-xnceu7u9" elementType="Cookie" testname="intercom-id-xnceu7u9">
+              <stringProp name="Cookie.value">4b957b90-8409-4512-b64b-c479ca5ede23</stringProp>
+              <stringProp name="Cookie.domain">fe-api.stake.pe</stringProp>
+              <stringProp name="Cookie.path">/restapi/v1/user/login</stringProp>
+              <boolProp name="Cookie.secure">false</boolProp>
+              <longProp name="Cookie.expires">0</longProp>
+              <boolProp name="Cookie.path_specified">true</boolProp>
+              <boolProp name="Cookie.domain_specified">true</boolProp>
+            </elementProp>
+            <elementProp name="_gcl_aw" elementType="Cookie" testname="_gcl_aw">
+              <stringProp name="Cookie.value">GCL.1760882836.CjwKCAjwmNLHBhA4EiwA3ts3mffA7wR1a8h2S6epVToHU-qoCx0OLDny5sDh--sUlKanUAAU_IUXVRoC6QUQAvD_BwE</stringProp>
+              <stringProp name="Cookie.domain">fe-api.stake.pe</stringProp>
+              <stringProp name="Cookie.path">/restapi/v1/user/login</stringProp>
+              <boolProp name="Cookie.secure">false</boolProp>
+              <longProp name="Cookie.expires">0</longProp>
+              <boolProp name="Cookie.path_specified">true</boolProp>
+              <boolProp name="Cookie.domain_specified">true</boolProp>
+            </elementProp>
+            <elementProp name="_ga_6QEPR6J6KC" elementType="Cookie" testname="_ga_6QEPR6J6KC">
+              <stringProp name="Cookie.value">GS2.1.s1760882833$o501$g1$t1760882836$j57$l0$h0</stringProp>
+              <stringProp name="Cookie.domain">fe-api.stake.pe</stringProp>
+              <stringProp name="Cookie.path">/restapi/v1/user/login</stringProp>
+              <boolProp name="Cookie.secure">false</boolProp>
+              <longProp name="Cookie.expires">0</longProp>
+              <boolProp name="Cookie.path_specified">true</boolProp>
+              <boolProp name="Cookie.domain_specified">true</boolProp>
+            </elementProp>
+            <elementProp name="_ga_MMTGY1YSE0" elementType="Cookie" testname="_ga_MMTGY1YSE0">
+              <stringProp name="Cookie.value">GS2.1.s1760882833$o500$g1$t1760882836$j57$l0$h1018589315</stringProp>
+              <stringProp name="Cookie.domain">fe-api.stake.pe</stringProp>
+              <stringProp name="Cookie.path">/restapi/v1/user/login</stringProp>
+              <boolProp name="Cookie.secure">false</boolProp>
+              <longProp name="Cookie.expires">0</longProp>
+              <boolProp name="Cookie.path_specified">true</boolProp>
+              <boolProp name="Cookie.domain_specified">true</boolProp>
+            </elementProp>
+            <elementProp name="_tgsid" elementType="Cookie" testname="_tgsid">
+              <stringProp name="Cookie.value">eyJscGQiOiJ7XCJscHVcIjpcImh0dHBzOi8vc3Rha2UucGUlMkZiaWVudmVuaWRhXCIsXCJscHRcIjpcIlN0YWtlJTNBJTIwQ2FzaW5vJTIwZW4lMjBMJUMzJUFEbmVhJTIweSUyMEFwdWVzdGFzJTIwRGVwb3J0aXZhcyUyMGVuJTIwUGVyJUMzJUJBXCIsXCJscHJcIjpcImh0dHBzOi8vd3d3Lmdvb2dsZS5jb21cIn0iLCJwcyI6ImUxMjQzYzM2LTM2YWItNDU3OC1iNDU1LWMwNGUwYTc5ZDczMCIsInB2YyI6IjEiLCJzYyI6IkNqd0tDQWp3bU5MSEJoQTRFaXdBM3RzM21mZkE3d1IxYThoMlM2ZXBWVG9IVS1xb0N4ME9MRG55NXNEaC0tc1VsS2FuVUFBVV9JVVhWUm9DNlFVUUF2RF9Cd0U6LTEiLCJlYyI6IjIiLCJwdiI6IjEiLCJ0aW0iOiJDandLQ0Fqd21OTEhCaEE0RWl3QTN0czNtZmZBN3dSMWE4aDJTNmVwVlRvSFUtcW9DeDBPTERueTVzRGgtLXNVbEthblVBQVVfSVVYVlJvQzZRVVFBdkRfQndFOjE3NjA4ODI4MzcwNTQ6MCJ9</stringProp>
+              <stringProp name="Cookie.domain">fe-api.stake.pe</stringProp>
+              <stringProp name="Cookie.path">/restapi/v1/user/login</stringProp>
+              <boolProp name="Cookie.secure">false</boolProp>
+              <longProp name="Cookie.expires">0</longProp>
+              <boolProp name="Cookie.path_specified">true</boolProp>
+              <boolProp name="Cookie.domain_specified">true</boolProp>
+            </elementProp>
+            <elementProp name="_gcl_au" elementType="Cookie" testname="_gcl_au">
+              <stringProp name="Cookie.value">1.1.1862667489.1757692895.1241699854.1760882837.1760882842</stringProp>
+              <stringProp name="Cookie.domain">fe-api.stake.pe</stringProp>
+              <stringProp name="Cookie.path">/restapi/v1/user/login</stringProp>
+              <boolProp name="Cookie.secure">false</boolProp>
+              <longProp name="Cookie.expires">0</longProp>
+              <boolProp name="Cookie.path_specified">true</boolProp>
+              <boolProp name="Cookie.domain_specified">true</boolProp>
+            </elementProp>
+          </collectionProp>
+          <stringProp name="TestPlan.comments">Created from cURL on 2025-10-19T09:08:30.6098222</stringProp>
+          <boolProp name="CookieManager.clearEachIteration">false</boolProp>
+          <boolProp name="CookieManager.controlledByThreadGroup">false</boolProp>
+        </CookieManager>
+        <hashTree/>
+        <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="TableVisualizer" testclass="ResultCollector" testname="View Results in Table">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="SimpleDataWriter" testclass="ResultCollector" testname="Simple Data Writer">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename">C:\Users\PC\Desktop\Reporte Jmeter\Resultados Prueba\Resultados.CSV</stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
